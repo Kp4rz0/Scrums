@@ -84,5 +84,6 @@ test:
 production:
   <<: *default
   database: d2eir2dpq6brmh
+  port: 5432
   username: fxuatzbgytiuhr
   password: 0GugsMD9wQS8sMwiWZH7rJep1D
