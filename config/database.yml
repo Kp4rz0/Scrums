@@ -83,6 +83,6 @@ test:
 #
 production:
   <<: *default
-  database: ScrumsDB_production
-  username: ScrumsDB
-  password: <%= ENV['SCRUMSDB_DATABASE_PASSWORD'] %>
+  database: d2eir2dpq6brmh
+  username: fxuatzbgytiuhr
+  password: 0GugsMD9wQS8sMwiWZH7rJep1D
