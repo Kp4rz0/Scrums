@@ -1,6 +1,15 @@
 class UsuariosController < ApplicationController
+
+  def index
+    @usuarios = Usuario.all
+  end
+
   def new
     @usuario = Usuario.new
+  end
+
+  def edit
+    @usuario = Usuario.find(params[:id])
   end
 
   def create
@@ -12,6 +21,16 @@ class UsuariosController < ApplicationController
       redirect_to usuario_path(@usuario)
     else
       render 'new'
+    end
+  end
+
+  def update
+    @usuario = Usuario.find(params[:id])
+    if @usuario.update(usuario_params)
+      flash[:notice] = "Usuario modificado con éxito"
+      redirect_to usuario_path(@usuario)
+    else
+      render 'edit'
     end
   end
 

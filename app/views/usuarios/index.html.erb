@@ -1,0 +1,27 @@
+<h1>listar todos los usuarios</h1>
+
+<p>
+<%= link_to "Crear un nuevo usuario", new_usuario_path %>
+</p>
+
+<table>
+  <tr>
+    <th>Rut</th>
+    <th>Nombre</th>
+    <th>Paterno</th>
+    <th>Materno</th>
+    <th>Editar</th>
+    <th>Eliminar</th>
+  </tr>
+
+  <% @usuarios.each do |usuario| %>
+  <tr>
+    <td><%= usuario.rut %> </td>
+    <td><%= usuario.nombre %> </td>
+    <td><%= usuario.paterno %> </td>
+    <td><%= usuario.materno %> </td>
+    <td><%= link_to 'editar', edit_usuario_path(usuario) %> </td>
+    <td><%= link_to 'ver', usuario_path(usuario) %> </td>
+  </tr>
+  <% end %>
+</table>
