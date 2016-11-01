@@ -1,38 +1,5 @@
 <h1>Crear un usuario </h1>
-<% if @usuario.errors.any? %>
-<h2> Los siguientes errores no permitieron ingresar un nuevo usuario</h2>
-  <ul>
-    <% @usuario.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
 
-    <% end %>
-  </ul>
-<% end %>
-
-<%= form_for @usuario do |v| %>
-  <div>
-    <%= v.label :rut %>
-    <%= v.text_field :rut %>
-  </div>
-  <div>
-    <%= v.label :nombre %>
-    <%= v.text_field :nombre %>
-  </div>
-  <div>
-    <%= v.label :paterno, :"Apellido Paterno" %>
-    <%= v.text_field :paterno %>
-  </div>
-  <div>
-    <%= v.label :materno, :"Apellido Materno" %>
-    <%= v.text_field :materno %>
-  </div>
-  <div>
-    <%= v.label :fecha_nacimiento, :"Fecha de Nacimiento" %>
-    <%= v.date_field :fecha_nacimiento %>
-  </div>
-  <div>
-    <%= v.submit %>
-  </div>
-<% end %>
+  <%= render 'usuario' %>
 
 <%= link_to "Volver a la lista", usuarios_path %>

@@ -11,6 +11,7 @@
     <th>Paterno</th>
     <th>Materno</th>
     <th>Editar</th>
+    <th>ver</th>
     <th>Eliminar</th>
   </tr>
 
@@ -22,6 +23,7 @@
     <td><%= usuario.materno %> </td>
     <td><%= link_to 'editar', edit_usuario_path(usuario) %> </td>
     <td><%= link_to 'ver', usuario_path(usuario) %> </td>
+    <td><%= link_to 'eliminar', usuario_path(usuario), method: :delete, data: {confirm: "Estas seguro?"} %> </td>
   </tr>
   <% end %>
 </table>

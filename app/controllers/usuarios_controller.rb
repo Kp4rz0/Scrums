@@ -1,4 +1,5 @@
 class UsuariosController < ApplicationController
+  before_action :set_usuario, only:[:edit, :update, :show, :destroy]
 
   def index
     @usuarios = Usuario.all
@@ -9,7 +10,6 @@ class UsuariosController < ApplicationController
   end
 
   def edit
-    @usuario = Usuario.find(params[:id])
   end
 
   def create
@@ -25,7 +25,6 @@ class UsuariosController < ApplicationController
   end
 
   def update
-    @usuario = Usuario.find(params[:id])
     if @usuario.update(usuario_params)
       flash[:notice] = "Usuario modificado con éxito"
       redirect_to usuario_path(@usuario)
@@ -35,6 +34,15 @@ class UsuariosController < ApplicationController
   end
 
   def show
+  end
+
+  def destroy
+    @usuario.destroy
+    redirect_to usuarios_path
+    flash[:notice] = "Usuario " + @usuario.nombre + " " + @usuario.paterno + " eliminado con éxito"
+  end
+
+  def set_usuario
     @usuario = Usuario.find(params[:id])
   end
 
