@@ -8,34 +8,64 @@
   </ul>
 <% end %>
 
-<%= form_for @usuario do |v| %>
-  <div>
-      <% if action_name == "new" or action_name == "create"  %>
-        <%= v.label :rut %>
-        <%= v.text_field :rut %>
-      <% end %>
-      <% if action_name == "edit" %>
-        <%= v.label :rut %>
-          <%= v.label @usuario.rut %>
-      <% end %>
+<div class="row">
+  <div class="col-md-6 col-xs-12">
+    <%= form_for(@usuario, :html => {class: "form-horizontal", role: "form"}) do |v| %>
+      <div class="form-group>">
+          <% if action_name == "new" or action_name == "create"  %>
+            <div class="control-label col-xs-12 col-md-5">
+              <%= v.label :rut %>
+            </div>
+            <div class="col-xs-12 col-md-7">
+              <%= v.text_field :rut, class: "form-control", placeholder:"1111111-1",autofocus:true %>
+            </div>
+          <% end %>
+          <% if action_name == "edit" %>
+            <div class="control-label col-xs-12 col-md-5">
+              <%= v.label :rut %>
+            </div>
+            <div class="control-label col-xs-12 col-md-7">
+              <%= v.label @usuario.rut %>
+            </div>
+          <% end %>
+      </div>
+      <div class="form-group>">
+        <div class="control-label col-xs-12 col-md-5">
+          <%= v.label :nombre %>
+        </div>
+          <div class="col-xs-12 col-md-7">
+            <%= v.text_field :nombre, class: "form-control" %>
+          </div>
+      </div>
+      <div class="form-group>">
+        <div class="control-label col-xs-12 col-md-5">
+          <%= v.label :paterno, :"Apellido Paterno" %>
+        </div>
+        <div class="col-xs-12 col-md-7">
+          <%= v.text_field :paterno, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group>">
+        <div class="control-label col-xs-12 col-md-5">
+          <%= v.label :materno, :"Apellido Materno" %>
+        </div>
+        <div class="col-xs-12 col-md-7">
+          <%= v.text_field :materno, class: "form-control"  %>
+        </div>
+      </div>
+      <div class="form-group>">
+        <div class="control-label col-xs-12 col-md-5">
+          <%= v.label :fecha_nacimiento, :"Fecha de Nacimiento" %>
+        </div>
+        <div class="col-xs-12 col-md-7">
+          <%= v.date_field :fecha_nacimiento,  class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group>">
+        <div class="control-label col-xs-12 col-md-4 col-md-offset-5">
+          <%= v.submit :"Crear Usuario", class: "btn btn-info" %>
+        </div>
+      </div>
+    <% end %>
   </div>
-  <div>
-    <%= v.label :nombre %>
-    <%= v.text_field :nombre %>
-  </div>
-  <div>
-    <%= v.label :paterno, :"Apellido Paterno" %>
-    <%= v.text_field :paterno %>
-  </div>
-  <div>
-    <%= v.label :materno, :"Apellido Materno" %>
-    <%= v.text_field :materno %>
-  </div>
-  <div>
-    <%= v.label :fecha_nacimiento, :"Fecha de Nacimiento" %>
-    <%= v.date_field :fecha_nacimiento %>
-  </div>
-  <div>
-    <%= v.submit %>
-  </div>
-<% end %>
+</div>
