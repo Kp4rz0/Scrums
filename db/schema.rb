@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161023220822) do
+ActiveRecord::Schema.define(version: 20161108011946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,12 +26,6 @@ ActiveRecord::Schema.define(version: 20161023220822) do
     t.integer "facultades_id"
     t.string  "tag"
     t.string  "descripcion"
-    t.integer "activo"
-  end
-
-  create_table "desesperados", force: :cascade do |t|
-    t.integer "tipguia_id"
-    t.integer "usuario_id"
     t.integer "activo"
   end
 
@@ -58,22 +52,6 @@ ActiveRecord::Schema.define(version: 20161023220822) do
     t.integer "activo"
   end
 
-  create_table "persrevs", force: :cascade do |t|
-    t.integer "tipguia_id"
-    t.integer "usuario_id"
-    t.integer "activo"
-  end
-
-  create_table "profesguias", force: :cascade do |t|
-    t.string "chao"
-  end
-
-  create_table "proguias", force: :cascade do |t|
-    t.integer "tipguia_id"
-    t.integer "usuario_id"
-    t.integer "activo"
-  end
-
   create_table "proyectos", force: :cascade do |t|
     t.string   "titulo"
     t.integer  "tipo_id"
@@ -85,12 +63,13 @@ ActiveRecord::Schema.define(version: 20161023220822) do
   end
 
   create_table "proyectos_usuarios", id: false, force: :cascade do |t|
-    t.integer "usuario_id",  null: false
-    t.integer "proyecto_id", null: false
+    t.integer "usuario_id",       null: false
+    t.integer "proyecto_id",      null: false
     t.integer "activo"
+    t.integer "tipo_relacion_id"
   end
 
-  create_table "tiporevs", force: :cascade do |t|
+  create_table "tipos_relaciones", force: :cascade do |t|
     t.string  "descripcion"
     t.integer "activo"
   end
@@ -98,10 +77,6 @@ ActiveRecord::Schema.define(version: 20161023220822) do
   create_table "tipos_usuarios", force: :cascade do |t|
     t.string  "descripcion"
     t.integer "activo"
-  end
-
-  create_table "tiposguias", force: :cascade do |t|
-    t.string "hola"
   end
 
   create_table "usuarios", force: :cascade do |t|
