@@ -1,15 +1,7 @@
-<% if @usuario.errors.any? %>
-<h2> Los siguientes errores no permitieron ingresar un nuevo usuario</h2>
-  <ul>
-    <% @usuario.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-
-    <% end %>
-  </ul>
-<% end %>
+<%= render 'Compartidos/errores', obj: @usuario %>
 
 <div class="row">
-  <div class="col-md-6 col-xs-12">
+  <div class="col-md-8 col-xs-12">
     <%= form_for(@usuario, :html => {class: "form-horizontal", role: "form"}) do |v| %>
       <div class="form-group>">
           <% if action_name == "new" or action_name == "create"  %>
@@ -63,7 +55,12 @@
       </div>
       <div class="form-group>">
         <div class="control-label col-xs-12 col-md-4 col-md-offset-5">
-          <%= v.submit :"Crear Usuario", class: "btn btn-info" %>
+          <% if action_name == "new" or action_name == "create"  %>
+            <%= v.submit :"Crear Usuario", class: "btn btn-info", style: "margin-top:10px" %>
+          <% end %>
+          <% if action_name == "edit" %>
+            <%= v.submit :"Editar Perfil", class: "btn btn-info", style: "margin-top:10px"  %>
+          <% end %>
         </div>
       </div>
     <% end %>

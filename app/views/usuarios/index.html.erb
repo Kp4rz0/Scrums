@@ -1,17 +1,12 @@
-
 <div class="row">
-  <div class="col-md-12">
-    <h1>listar todos los usuarios</h1>
-
-    <p>
-    <%= link_to "Crear un nuevo usuario", new_usuario_path %>
-    </p>
+  <div class="col-md-12 col-xs-12 titulo">
+    <h1>Lista de usuarios registrados</h1>
   </div>
 </div>
 <div class="row">
     <div class="col-md-12">
       <table id="Tabla" class="table table-striped cell-border">
-        <thead style="background:white"">
+        <thead style="background:white">
           <tr>
             <th>Rut</th>
             <th>Nombre</th>
@@ -29,15 +24,20 @@
             <td><%= usuario.nombre %> </td>
             <td><%= usuario.paterno %> </td>
             <td><%= usuario.materno %> </td>
-            <td><%= link_to 'editar', edit_usuario_path(usuario) %> </td>
-            <td><%= link_to 'ver', usuario_path(usuario) %> </td>
-            <td><%= link_to 'eliminar', usuario_path(usuario), method: :delete, data: {confirm: "Estas seguro?"} %> </td>
+            <td class="td-icon"><%= link_to '', edit_usuario_path(usuario), class:"fa fa-pencil" %> </td>
+            <td class="td-icon"><%= link_to '', usuario_path(usuario), class:"fa fa-eye" %> </td>
+            <td class="td-icon"><%= link_to '', usuario_path(usuario),class:"fa fa-trash", method: :delete, data: {confirm: "Estas seguro?"} %> </td>
           </tr>
           <% end %>
         </tbody>
       </table>
 </div>
 
+</div>
+<div class="row">
+  <div class="col-md-6 ">
+    [<%= link_to "Crear un nuevo usuario", new_usuario_path %>]
+  </div>
 </div>
 <script>
   $( document ).ready(function() {

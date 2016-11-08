@@ -7,12 +7,12 @@
 /*CSS file for fontawesome - an iconfont we will be using. This CSS file imported contains the font-face declaration. More info: http://fortawesome.github.io/Font-Awesome/ */
 @import url(http://thecodeplayer.com/uploads/fonts/fontawesome/css/font-awesome.min.css);
 
-/*Basic reset*/
-* {margin: 0; padding: 0;}
+
 
 body {
 	background: #4EB889;
 	font-family: Nunito, arial, verdana;
+	height: 100%;
 }
 #accordian {
 	background: #004050;
@@ -66,6 +66,12 @@ body {
 /*Lets hide the non active LIs by default*/
 #accordian ul ul {
 	display: none;
+	margin: 0px;
+	padding: 0px;
+}
+#accordian ul {
+	margin: 0px;
+	padding: 0px;
 }
 #accordian li.active ul {
 	display: block;
@@ -92,23 +98,31 @@ body {
 
 
 
-
+html{
+		background: #81DAF5;
+}
 body {
   background-color: #f8f8f8;
+	height: 100%;
 }
 #wrapper {
   width: 100%;
+	height: 100%;
+	background:#81DAF5;
 }
 #page-wrapper {
-  padding: 0 15px;
+	height:100%;
+	margin:0px 0px 0px 0px;
+  padding: 1px 20px 1px 20px;
   min-height: 568px;
   background-color: white;
+  box-shadow:-2px 0px 15px 1px #1D58A8;
 }
 @media (min-width: 768px) {
   #page-wrapper {
     position: inherit;
     margin: 0 0 0 250px;
-    padding: 0 30px;
+    padding: 1px 20px 1px 20px;
     border-left: 1px solid #e7e7e7;
   }
 }
@@ -145,7 +159,21 @@ body {
   min-width: 0;
 }
 .navbar .navbar-collapse{
+content: "";
+	padding-left: 0px;
 	position: absolute;
+}
+.navbar-header:before, .navbar-header:after {
+	content: "";
+	display:inherit;
+}.navbar-header, .navbar-header:after {
+	content: "";
+	display:inherit;
+	clear:none;
+}
+.navbar-header:before, .navbar-header:after{
+	content: "";
+	display:inherit;
 }
 @media (min-width: 768px) {
   .sidebar {
@@ -159,4 +187,16 @@ body {
   .navbar-top-links .dropdown-alerts {
     margin-left: auto;
   }
+}
+
+
+.titulo {
+	background: linear-gradient(#70c2dd, #e3eff8);
+  margin-bottom: 20px;
+}
+.td-icon {
+	text-align: center;
+}
+.alert-top{
+	margin:2px -15px 2px -15px;
 }

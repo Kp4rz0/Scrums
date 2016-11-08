@@ -17,7 +17,7 @@ class UsuariosController < ApplicationController
     #render plain: params[:usuario].inspect  #muestra los valores que recibe en la ventana
     @usuario = Usuario.new(usuario_params)
     if @usuario.save
-      flash[:notice] = "Usuario ingresado con éxito"
+      flash[:success] = "Usuario ingresado con éxito"
       redirect_to usuario_path(@usuario)
     else
       render 'new'
@@ -26,7 +26,7 @@ class UsuariosController < ApplicationController
 
   def update
     if @usuario.update(usuario_params)
-      flash[:notice] = "Usuario modificado con éxito"
+      flash[:success] = "Usuario modificado con éxito"
       redirect_to usuario_path(@usuario)
     else
       render 'edit'
@@ -39,7 +39,7 @@ class UsuariosController < ApplicationController
   def destroy
     @usuario.destroy
     redirect_to usuarios_path
-    flash[:notice] = "Usuario " + @usuario.nombre + " " + @usuario.paterno + " eliminado con éxito"
+    flash[:danger] = "Usuario " + @usuario.nombre + " " + @usuario.paterno + " eliminado con éxito"
   end
 
   def set_usuario
