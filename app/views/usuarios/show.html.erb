@@ -22,7 +22,7 @@
           <%= v.label :nombre %>
         </div>
           <div class="col-xs-12 col-md-7">
-            <%= v.text_field :nombre, class: "form-control", disabled:true %>
+            <%= v.text_field :nombre, class: "form-control",disabled:true %>
           </div>
       </div>
       <div class="form-group>">
@@ -47,6 +47,63 @@
         </div>
         <div class="col-xs-12 col-md-7">
           <%= v.date_field :fecha_nacimiento,  class: "form-control", disabled:true %>
+        </div>
+      </div>
+      <div class="form-group>">
+        <div class="control-label col-xs-12 col-md-5">
+          <%= v.label :email, :"Correo" %>
+        </div>
+        <div class="col-xs-12 col-md-7">
+          <%= v.text_field :email,  class: "form-control", disabled:true %>
+        </div>
+      </div>
+
+      <div class="form-group>">
+        <div class="control-label col-xs-12 col-md-5">
+          <%= v.label :institucion, :"Institución" %>
+        </div>
+        <div class="col-xs-12 col-md-7">
+          <input class="form-control" disabled="true" value="<%= @institucion.tag + " | " + @institucion.descripcion %>" >
+        </div>
+      </div>
+      <div class="form-group>">
+        <div class="control-label col-xs-12 col-md-5">
+          <%= v.label :facultade, :"Facultad" %>
+        </div>
+        <div class="col-xs-12 col-md-7">
+          <input class="form-control" disabled="true" value="<%= @facultad.tag + " | " + @facultad.descripcion %>" >
+        </div>
+      </div>
+      <div class="form-group>">
+        <div class="control-label col-xs-12 col-md-5">
+          <%= v.label :departamento, :"Departamento" %>
+        </div>
+        <div class="col-xs-12 col-md-7">
+          <input class="form-control" disabled="true" value="<%= @departamento.tag + " | " + @departamento.descripcion %>" >
+        </div>
+      </div>
+      <div class="form-group>">
+        <div class="control-label col-xs-12 col-md-5">
+          <%= v.label :carrera, :"Carrera" %>
+        </div>
+        <div class="col-xs-12 col-md-7">
+          <input class="form-control" disabled="true" value="<%= @carrera.tag + " | " + @carrera.descripcion %>" >
+        </div>
+      </div>
+      <div class="form-group>">
+        <div class="control-label col-xs-12 col-md-5">
+          <%= v.label :email, :"Email" %>
+        </div>
+        <div class="col-xs-12 col-md-7">
+          <%= v.text_field :email, class: "form-control", disabled:true   %>
+        </div>
+      </div>
+      <div class="form-group>">
+        <div class="control-label col-xs-12 col-md-5">
+          <%= v.label :contrasena, :"Password" %>
+        </div>
+        <div class="col-xs-12 col-md-7">
+          <%= v.text_field :contrasena, class: "form-control", disabled:true , type: "password"  %>
         </div>
       </div>
       <div class="form-group>">

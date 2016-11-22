@@ -1,5 +1,4 @@
 <%= render 'Compartidos/errores', obj: @usuario %>
-
 <div class="row">
   <div class="col-md-8 col-xs-12">
     <%= form_for(@usuario, :html => {class: "form-horizontal", role: "form"}) do |v| %>
@@ -51,6 +50,142 @@
         </div>
         <div class="col-xs-12 col-md-7">
           <%= v.date_field :fecha_nacimiento,  class: "form-control" %>
+        </div>
+      </div>
+      <% if action_name == "new"  or action_name == "create" %>
+        <div class="form-group>">
+          <div class="control-label col-xs-12 col-md-5">
+            <%= v.label :institucion, :"Institución" %>
+          </div>
+          <div class="col-xs-12 col-md-7">
+            <select id="SelectInstituciones" onchange="llenarFacultades()" class="form-control">
+                <option value="0"> Seleccione Institución </option>
+                <% @instituciones.each do |insti| %>
+                  <option value=<%= insti.id %> > <%= insti.tag + " | " + insti.descripcion %> </option>
+                <% end %>
+            </select>
+          </div>
+        </div>
+      <% end %>
+      <% if action_name == "edit"%>
+        <div class="form-group>">
+          <div class="control-label col-xs-12 col-md-5">
+            <%= v.label :institucion, :"Institución" %>
+          </div>
+          <div class="col-xs-12 col-md-7">
+            <select id="SelectInstituciones" onchange="llenarFacultades()" class="form-control">
+                <option value="0"> Seleccione Institución </option>
+                <% @instituciones.each do |insti| %>
+                  <% if insti.id == @institucion.id %>
+                    <option selected value=<%= insti.id %> > <%= insti.tag + " | " + insti.descripcion %> </option>
+                  <% end %>
+                  <% if insti.id != @institucion.id %>
+                    <option value=<%= insti.id %> > <%= insti.tag + " | " + insti.descripcion %> </option>
+                  <% end %>
+                <% end %>
+            </select>
+          </div>
+        </div>
+      <% end %>
+      <% if action_name == "new"  or action_name == "create" %>
+        <div class="form-group>">
+          <div class="control-label col-xs-12 col-md-5">
+            <%= v.label :facultade, :"Facultad" %>
+          </div>
+          <div class="col-xs-12 col-md-7">
+            <select id="SelectFacultades" onchange="llenarDepartamentos()" class="form-control">
+                <option value="0"> Seleccione Facultad </option>
+            </select>
+          </div>
+        </div>
+      <% end %>
+
+      <% if action_name == "edit"%>
+        <div class="form-group>">
+          <div class="control-label col-xs-12 col-md-5">
+            <%= v.label :facultade, :"Facultad" %>
+          </div>
+          <div class="col-xs-12 col-md-7">
+            <select id="SelectFacultades" onchange="llenarDepartamentos()" class="form-control">
+              <option value="0"> Seleccione Facultad </option>
+              <% @facultades.each do |insti| %>
+                <% if insti.id == @facultad.id %>
+                  <option selected value=<%= insti.id %> > <%= insti.tag + " | " + insti.descripcion %> </option>
+                <% end %>
+                <% if insti.id != @facultad.id %>
+                  <option value=<%= insti.id %> > <%= insti.tag + " | " + insti.descripcion %> </option>
+                <% end %>
+              <% end %>
+            </select>
+          </div>
+        </div>
+      <% end %>
+      <% if action_name == "new"  or action_name == "create" %>
+        <div class="form-group>">
+          <div class="control-label col-xs-12 col-md-5">
+            <%= v.label :departamento, :"Departamento" %>
+          </div>
+          <div class="col-xs-12 col-md-7">
+            <select id="SelectDepartamentos" onchange="llenarCarreras()" class="form-control">
+                <option value="0"> Seleccione Departamento </option>
+            </select>
+          </div>
+        </div>
+      <% end %>
+      <% if action_name == "edit"%>
+        <div class="form-group>">
+          <div class="control-label col-xs-12 col-md-5">
+            <%= v.label :departamento, :"Departamento" %>
+          </div>
+          <div class="col-xs-12 col-md-7">
+            <select id="SelectDepartamentos" onchange="llenarCarreras()" class="form-control">
+                <option value="0"> Seleccione Departamento </option>
+                <% @departamentos.each do |insti| %>
+                  <% if insti.id == @departamento.id %>
+                    <option selected value=<%= insti.id %> > <%= insti.tag + " | " + insti.descripcion %> </option>
+                  <% end %>
+                  <% if insti.id != @departamento.id %>
+                    <option value=<%= insti.id %> > <%= insti.tag + " | " + insti.descripcion %> </option>
+                  <% end %>
+                <% end %>
+            </select>
+          </div>
+        </div>
+      <% end %>
+      <% if action_name == "new"  or action_name == "create" %>
+        <div class="form-group>">
+          <div class="control-label col-xs-12 col-md-5">
+            <%= v.label :carrera, :"Carrera" %>
+          </div>
+          <div class="col-xs-12 col-md-7">
+            <%= v.select :carrera_id, {},{include_blank: 'Seleccione Carrera'}, class: "form-control" %>
+          </div>
+        </div>
+      <% end %>
+      <% if action_name == "edit"%>
+        <div class="form-group>">
+          <div class="control-label col-xs-12 col-md-5">
+            <%= v.label :carrera, :"Carrera" %>
+          </div>
+          <div class="col-xs-12 col-md-7">
+            <%= v.select :carrera_id, @carreras.collect { |p| [p.tag + " | " + p.descripcion, p.id]}, {include_blank: 'Seleccione Carrera'}, class: "form-control" %>
+          </div>
+        </div>
+      <% end %>
+      <div class="form-group>">
+        <div class="control-label col-xs-12 col-md-5">
+          <%= v.label :email, :"Email" %>
+        </div>
+        <div class="col-xs-12 col-md-7">
+          <%= v.text_field :email, class: "form-control"  %>
+        </div>
+      </div>
+      <div class="form-group>">
+        <div class="control-label col-xs-12 col-md-5">
+          <%= v.label :contrasena, :"Password" %>
+        </div>
+        <div class="col-xs-12 col-md-7">
+          <%= v.text_field :contrasena, class: "form-control", type: "password"  %>
         </div>
       </div>
       <div class="form-group>">

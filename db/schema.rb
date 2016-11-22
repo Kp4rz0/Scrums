@@ -10,20 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161108011946) do
+ActiveRecord::Schema.define(version: 20161113225339) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "carreras", force: :cascade do |t|
-    t.integer "departamentos_id"
+    t.integer "departamento_id"
     t.string  "tag"
     t.string  "descripcion"
     t.integer "activo"
   end
 
   create_table "departamentos", force: :cascade do |t|
-    t.integer "facultades_id"
+    t.integer "facultade_id"
     t.string  "tag"
     t.string  "descripcion"
     t.integer "activo"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20161108011946) do
   end
 
   create_table "facultades", force: :cascade do |t|
-    t.integer "instituciones_id"
+    t.integer "institucione_id"
     t.string  "tag"
     t.string  "descripcion"
     t.integer "activo"
@@ -63,10 +63,10 @@ ActiveRecord::Schema.define(version: 20161108011946) do
   end
 
   create_table "proyectos_usuarios", id: false, force: :cascade do |t|
-    t.integer "usuario_id",       null: false
-    t.integer "proyecto_id",      null: false
+    t.integer "usuario_id",         null: false
+    t.integer "proyecto_id",        null: false
     t.integer "activo"
-    t.integer "tipo_relacion_id"
+    t.integer "tipos_relacione_id"
   end
 
   create_table "tipos_relaciones", force: :cascade do |t|
@@ -84,11 +84,13 @@ ActiveRecord::Schema.define(version: 20161108011946) do
     t.string   "paterno"
     t.string   "materno"
     t.string   "rut"
-    t.integer  "tipo_usuario_id"
+    t.integer  "tipos_usuario_id"
     t.datetime "fecha_nacimiento"
     t.integer  "carrera_id"
-    t.integer  "estado_usuario_id"
+    t.integer  "estados_usuario_id"
     t.integer  "activo"
+    t.string   "email"
+    t.string   "contrasena"
   end
 
 end
