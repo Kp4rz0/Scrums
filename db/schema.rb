@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161113225339) do
+ActiveRecord::Schema.define(version: 20161130011244) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,11 @@ ActiveRecord::Schema.define(version: 20161113225339) do
     t.integer "activo"
   end
 
+  create_table "estados_scrums", force: :cascade do |t|
+    t.string  "descripcion"
+    t.integer "activo"
+  end
+
   create_table "estados_usuarios", force: :cascade do |t|
     t.string  "descripcion"
     t.integer "activo"
@@ -52,12 +57,17 @@ ActiveRecord::Schema.define(version: 20161113225339) do
     t.integer "activo"
   end
 
+  create_table "nombres_puntos", force: :cascade do |t|
+    t.string  "descripcion"
+    t.integer "activo"
+  end
+
   create_table "proyectos", force: :cascade do |t|
     t.string   "titulo"
     t.integer  "tipo_id"
     t.text     "descripcion"
     t.datetime "inicio"
-    t.integer  "estado_proyecto_id"
+    t.integer  "estados_proyecto_id"
     t.datetime "termino"
     t.integer  "activo"
   end
@@ -67,6 +77,32 @@ ActiveRecord::Schema.define(version: 20161113225339) do
     t.integer "proyecto_id",        null: false
     t.integer "activo"
     t.integer "tipos_relacione_id"
+  end
+
+  create_table "puntos", force: :cascade do |t|
+    t.integer "scrum_id"
+    t.integer "nombres_punto_id"
+    t.string  "descripcion"
+    t.integer "activo"
+  end
+
+  create_table "puntos_respuestas", force: :cascade do |t|
+    t.integer "punto_id"
+    t.string  "texto_citado"
+    t.string  "descripcion"
+    t.integer "activo"
+  end
+
+  create_table "scrums", force: :cascade do |t|
+    t.datetime "fecha_creacion"
+    t.string   "nombre"
+    t.string   "descripcion"
+    t.integer  "proyecto_id"
+    t.datetime "fecha_envio"
+    t.datetime "fecha_visto"
+    t.datetime "fecha_revision"
+    t.integer  "estados_scrum_id"
+    t.integer  "activo"
   end
 
   create_table "tipos_relaciones", force: :cascade do |t|
@@ -91,6 +127,7 @@ ActiveRecord::Schema.define(version: 20161113225339) do
     t.integer  "activo"
     t.string   "email"
     t.string   "contrasena"
+    t.string   "password_digest"
   end
 
 end

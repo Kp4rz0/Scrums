@@ -1,4 +1,4 @@
-class Tipos_Usuario < ActiveRecord::Base
+class TiposUsuario < ActiveRecord::Base
 
 
 

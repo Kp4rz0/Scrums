@@ -7,5 +7,6 @@ class Usuario < ActiveRecord::Base
   validates :rut, presence:true, uniqueness:true, length: {minimum:9, maximum: 12}
   validates :fecha_nacimiento, presence:true
 
+  has_secure_password
 
 end

@@ -35,6 +35,15 @@ class UsuariosController < ApplicationController
   end
 
   def update
+    @carrera = Carrera.find(@usuario.carrera_id)
+    @departamento = Departamento.find(@carrera.departamento_id)
+    @facultad = Facultade.find(@departamento.facultade_id)
+    @institucion = Institucione.find(@facultad.institucione_id)
+
+    @facultades = Institucione.find(@institucion.id).facultades
+    @departamentos = Facultade.find(@facultad.id).departamentos
+    @carreras = Departamento.find(@departamento.id).carreras
+
     if @usuario.update(usuario_params)
       flash[:success] = "Usuario modificado con éxito"
       redirect_to usuario_path(@usuario)
@@ -63,7 +72,7 @@ class UsuariosController < ApplicationController
 
   private
     def usuario_params
-      params.require(:usuario).permit(:nombre,:paterno,:materno,:rut,:tipo_usuario_id,:fecha_nacimiento,:carrera_id,:estado_usuario_id,:activo, :email, :contrasena)
+      params.require(:usuario).permit(:nombre,:paterno,:materno,:rut,:tipo_usuario_id,:fecha_nacimiento,:carrera_id,:estado_usuario_id,:activo, :email, :password)
     end
   ##Métodos llamados desde AJAX
 public
