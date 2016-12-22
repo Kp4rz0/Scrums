@@ -10,10 +10,17 @@
 
   <body style="background:white">
     <div id="wrapper">
-
-      <%= render 'layouts/menu' %>
+      <% if logged_in? %>
+        <%= render 'layouts/menu' %>
+      <% else %>
+        <% if controller_name != "sessions" %>
+          <% redireccionar %>
+        <% end %>
+      <% end %>
       <div id="page-wrapper" >
-        <%= render 'layouts/mensajes' %>
+        <% if logged_in? %>
+          <%= render 'layouts/mensajes' %>
+        <% end %>
         <%= yield %>
         <div>
           <%= debug(params) if Rails.env.development? %>

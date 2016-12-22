@@ -213,7 +213,7 @@
                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                        </li>
                        <li class="divider"></li>
-                       <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                       <li><%= link_to '<i class="fa fa-sign-out fa-fw"></i> Logout'.html_safe , logout_path, method: :delete %>
                        </li>
                    </ul>
                    <!-- /.dropdown-user -->
@@ -237,7 +237,7 @@
                     <li class="active">
                       <h3><span class="fa fa-file"></span>Proyecto</h3>
                       <ul>
-                        <li><a href="#">structura</a></li>
+                        <li><a href="#">Estructura</a></li>
                         <li><a href="#">Archivos</a></li>
                         <li><a href="#">Comentarios</a></li>
                       </ul>
@@ -245,7 +245,7 @@
                     <li>
                       <h3><span class="fa fa-refresh"></span>Scrums</h3>
                       <ul>
-                        <li><a href="#">Nuevo</a></li>
+                        <li><%= link_to '<span class="fa fa-plus"></span> Nuevo'.html_safe ,new_scrum_path(:create) %></li>
                         <li><a href="#">Ver Scrums</a></li>
                       </ul>
                     </li>

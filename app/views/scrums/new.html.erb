@@ -3,3 +3,56 @@
     <h1>Nuevo Scrum </h1>
   </div>
 </div>
+<div class="row">
+  <div class="col-md-12 col-xs-12">
+    <%= form_for(@scrum, :html => {class: "form-horizontal", role: "form"}) do |v| %>
+      <div class="form-group>">
+        <div class="control-label col-xs-12 col-md-3">
+          <%= v.label :proyecto_id, :"Proyecto" %>
+        </div>
+        <div class="col-xs-12 col-md-9">
+          <%= v.select :proyecto_id, @proyectos.collect { |p| [p.titulo, p.id]}, {include_blank: 'Seleccione Proyecto', onchange:'SelectProyectoChange()' }, class: "form-control" %>
+        </div>
+      </div>
+      <div id="ScrumContainer" style="display:none">
+        <div class="form-group>">
+          <div class="control-label col-xs-12 col-md-3">
+            <%= v.label :Título%>
+          </div>
+          <div class="control-label col-xs-12 col-md-9">
+            <%= v.text_field :nombre, class: "form-control" %>
+          </div>
+        </div>
+        <div class="form-group>">
+          <div class="control-label col-xs-12 col-md-3">
+            <%= v.label :descripción%>
+          </div>
+          <div class="control-label col-xs-12 col-md-9">
+            <%= v.text_area :descripcion, class: "form-control" %>
+          </div>
+        </div>
+        <% @NombrePuntos.each do |p| %>
+          <div class="form-group>">
+            <%= v.fields_for :puntos, p do |field| %>
+              <div class="control-label col-xs-12 col-md-3">
+                <%= field.label p.descripcion%>
+              </div>
+              <div class="control-label col-xs-12 col-md-9">
+                <%= field.text_area :descripcion, :value => '', class: "form-control" %>
+                <%= field.hidden_field :nombres_punto_id, :value => p.id, class: "form-control" %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+        <div class="form-group>">
+        <div class="control-label col-xs-12 col-md-4 col-md-offset-4">
+          <%= v.submit :"Crear Scrum", class: "btn btn-info", style: "margin-top:10px"  %>
+        </div>
+      </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<script type="text/javascript">
+  $('#scrum_proyecto_id').change(SelectProyectoChange);
+</script>

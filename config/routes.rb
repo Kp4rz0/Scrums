@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     end
   end
   root 'welcome#home'
+  resources :scrums
+  get 'login', to:'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
   #  get 'welcome/home', to: 'Welcome#home'
   #  get 'welcome/about', to: 'Welcome#about'
 end
