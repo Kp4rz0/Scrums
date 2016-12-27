@@ -230,7 +230,7 @@
                       <h3><span class="fa fa-users"></span>Usuarios</h3>
                       <ul>
                         <li><%= link_to '<span class="fa fa-user-plus"></span> Nuevo'.html_safe ,new_usuario_path(:create) %></li>
-                        <li><%= link_to '<span class="fa fa-list-ul"></span> Listar'.html_safe ,usuarios_path(:create) %></li>
+                        <li><%= link_to '<span class="fa fa-list-ul"></span> Listar Usuarios'.html_safe ,usuarios_path(:create) %></li>
                       </ul>
                     </li>
                     <!-- we will keep this LI open by default -->
@@ -246,7 +246,7 @@
                       <h3><span class="fa fa-refresh"></span>Scrums</h3>
                       <ul>
                         <li><%= link_to '<span class="fa fa-plus"></span> Nuevo'.html_safe ,new_scrum_path(:create) %></li>
-                        <li><a href="#">Ver Scrums</a></li>
+                        <li><%= link_to '<span class="fa fa-list-ul"></span> Listar SCrums'.html_safe ,scrums_path(:create) %></li>
                       </ul>
                     </li>
                   </ul>

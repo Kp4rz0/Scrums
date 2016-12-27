@@ -12,8 +12,15 @@ Rails.application.routes.draw do
       post 'llenarCarreras'
     end
   end
+  
   root 'welcome#home'
-  resources :scrums
+
+  resources :scrums do
+    collection do
+      post 'selectProyecto'
+    end
+  end
+  
   get 'login', to:'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'

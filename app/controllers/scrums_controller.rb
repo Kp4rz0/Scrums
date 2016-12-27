@@ -1,4 +1,9 @@
-class ScrumsController < ApplicationController
+ class ScrumsController < ApplicationController
+
+  def index
+    @proyectos = Proyecto.where("id in (?)",(ProyectosUsuario.where("usuario_id = ?",session[:usuario_id]).select("proyecto_id")))
+    @scrums = Scrum.all
+  end
 
   def new
     @scrum = Scrum.new
@@ -7,7 +12,6 @@ class ScrumsController < ApplicationController
   end
 
   def create
-    debugger
     erroress = "a"
     #render plain: params[:usuario].inspect  #muestra los valores que recibe en la ventana
     @scrum = Scrum.new(scrum_params)
@@ -29,11 +33,22 @@ class ScrumsController < ApplicationController
     end
   end
 
+
+
   private
     def scrum_params
       params.require(:scrum).permit(:nombre, :descripcion, :proyecto_id)
     end
 
-
+  public
+    def selectProyecto
+      parametro = params[:proyecto]
+      @scrums = Proyecto.find(parametro["id"]).scrums
+      respond_to do |format|
+        format.html {}
+        format.js   {}
+        format.json { render json: @scrums}
+      end
+    end
 
 end

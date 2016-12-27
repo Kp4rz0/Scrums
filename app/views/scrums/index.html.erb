@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-md-12 col-xs-12 titulo">
+    <h1>Ver Scrums </h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12 col-xs-12">
+      <div class="form-group>">
+        <div class="control-label col-xs-12 col-md-3">
+          <label>Seleccione Proyecto</label>
+        </div>
+        <div class="col-xs-12 col-md-9">
+          <select id="SelectProyectos_ScrumsIndex" onchange="SelectProyectos_ScrumsIndex_Change()" class="form-control">
+            <option value="0"> Seleccione Proyecto </option>
+            <% @proyectos.each do |proy| %>
+              <option value=<%= proy.id %> > <%= proy.titulo + " | " + proy.descripcion %> </option>
+            <% end %>
+          </select>
+        </div>
+      </div>
+      <div id="ScrumContainer_ScrumsIndex" >
+        <table id="Tabla" class="table table-striped cell-border">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th>Fecha Creación</th>
+              <th>Editar</th>
+              <th>Respuesta</th>
+              <th>Eliminar</th>
+            </tr>
+          </thead>
+          <tbody id="Tablebody_ScrumsIndex">
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>
